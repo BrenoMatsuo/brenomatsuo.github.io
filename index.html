@@ -1,0 +1,125 @@
+import { useState } from "react";
+
+export default function App() {
+  const [lang, setLang] = useState("vi");
+
+  const content = {
+    en: {
+      subtitle: "Hi, I'm a Noob Programmer / Certified Clown / Society's Menace",
+      aboutTitle: "What you should know about me:",
+      aboutText:
+        "I'm a college student currently studying at PTIT, with no job, no girlfriend, no money. That's it. What else do you want me to say?",
+      professionTitle: "My profession:",
+      professionList: [
+        "Testing and deconstructing things in every single way I can think of.",
+        "Being an absolute soulless moron.",
+        "Having no will power to push myself further than a toddler.",
+      ],
+      contact: "Contacts",
+    },
+
+    vi: {
+      subtitle: "Xin chào, tôi là một lập trình viên gà mờ",
+      aboutTitle: "Những điều bạn nên biết về tôi:",
+      aboutText:
+        "Tôi là sinh viên hiện đang học tại PTIT, biết ít thứ, nhưng sẵn sàng học hỏi, trau dồi thêm kiến thức cần thiết, phục vụ cho công việc sau này.",
+      professionTitle: "Sở trường của tôi:",
+      professionList: [
+        "Tester a.k.a. vua phá hoại.",
+        "Programmer Lvl 1.",
+        "Deadline runner.",
+      ],
+      contact: "Liên hệ",
+    },
+  };
+
+  const t = content[lang];
+
+  return (
+    <div className="min-h-screen bg-white text-black">
+      <div className="p-8 max-w-6xl mx-auto">
+
+        {/* LANGUAGE TOGGLE */}
+        <div className="flex justify-end mb-6">
+          <button
+            onClick={() => setLang(lang === "en" ? "vi" : "en")}
+            className="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-sm"
+          >
+            {lang === "en" ? "Vie" : "Eng"}
+          </button>
+        </div>
+
+        {/* TOP ROW */}
+        <div className="flex flex-col md:flex-row gap-10 items-start">
+
+          {/* LEFT */}
+          <div className="flex-1">
+            <h1 className="text-5xl font-extrabold">
+              Breno Matsuo
+            </h1>
+
+            <p className="mt-4 text-lg text-gray-600">
+              {t.subtitle}
+            </p>
+
+            <div className="mt-6 text-gray-800 leading-relaxed">
+              <p><strong>{t.aboutTitle}</strong></p>
+              <p className="mt-2">{t.aboutText}</p>
+            </div>
+
+            <div className="mt-6 text-gray-800">
+              <p><strong>{t.professionTitle}</strong></p>
+
+              <ul className="mt-2 list-disc list-inside space-y-1">
+                {t.professionList.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CONTACT BOX */}
+            <div className="mt-8 bg-gray-100 border border-gray-300 rounded-2xl p-6 max-w-sm">
+              <h2 className="text-xl font-bold mb-4">{t.contact}</h2>
+
+              <ul className="space-y-2 text-gray-800">
+                <li>Email: <span className="font-medium">tuankiet.research@gmail.com</span></li>
+                <li>GitHub: <span className="font-medium">@BrenoMatsuo</span></li>
+                <li>
+                  YouTube:{" "}
+                  <a
+                    href="https://www.youtube.com/@brenorosu"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline font-medium"
+                  >
+                    @brenorosu
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* GIF */}
+            <img
+              src="https://media.tenor.com/KhzmDgSu3sgAAAAi/bear-scream.gif"
+              alt="Funi bear"
+              className="mt-6 w-48 rounded-xl"
+            />
+          </div>
+
+          {/* RIGHT: SHORT */}
+          <div className="w-[280px] aspect-[9/16] rounded-xl overflow-hidden border border-gray-300">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/SV21-o0Gv6M"
+              title="mind = control"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
